@@ -1,0 +1,544 @@
+@font-face
+{
+    font-family: 'Lato';
+    src: url('Lato-Regular.ttf');
+}
+@font-face
+{
+    font-family: 'Bebas Neue';
+    src: url('BebasNeue-Regular.ttf');
+}
+
+
+html
+{
+    height: 100vh;
+}
+.navi
+{
+    overflow: hidden;
+    padding: 0px;
+    margin: 0px;
+    background-color: rgba(0,0,0,0.3);
+}
+.navi ul
+{ 
+
+    max-width:100%;
+    text-align: right;
+    float: right;
+}
+.navi ul li{
+    list-style: none;
+    display: inline-block;
+    cursor: pointer;
+}
+.navi ul li a
+{
+    display:block;
+    text-decoration:none;
+    text-transform:uppercase;
+    font-size: 25px;
+    padding: 25px;
+    color: #ebebeb;
+    letter-spacing: 2px;
+    font-weight: 500;
+    font-family: 'Lato';
+}
+.navi ul li a:hover
+{
+    transition:all ease 0.5s;
+    color: #ec4c4c;
+}
+.navi img
+{
+    width: auto;
+    padding-top: 10px;
+    padding-left: 25px;
+}
+.navi ul li a.active
+{
+    color:#ec4c4c;
+}
+body
+{
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(66, 66, 66);
+}
+.itemcolumn
+{
+    border: 0;
+  margin-top: 100px;
+  position: relative;
+  text-align: center;
+  float: left;
+  box-sizing: border-box;
+  width: 33%;
+  padding: 20px;
+  margin-bottom: 50px;
+  z-index: 1;
+  height: 100%;
+}
+.row:after 
+{
+    content: "";
+    display: table;
+    clear: both;
+}
+.itemcolumn img
+{
+    border: 2px solid black;
+    cursor: pointer;
+    min-width: 30%;
+    max-width: 100%;
+    width: 400px;
+    height: 400px;
+}
+.itemcolumn p
+{
+
+display: inline;
+color: #ec4c4c;
+font-family: 'Lato';
+}
+
+.itemcolumn h2
+{
+    color : #ebebeb;
+    font-family: 'Lato';
+    letter-spacing: 2px;
+    font-size: 20px;
+    font-weight: 200;
+}
+.itemcolumn button
+{
+    background-color: rgb(66, 66, 66);
+    border: none;
+    color: #ebebeb;
+    padding: 10px;
+    text-transform: uppercase;
+    cursor:pointer;
+    border: 1px solid #666666;
+}
+.itemcolumn button:hover
+{
+    transition:all ease 0.1s;
+    background-color: #ec4c4c;
+    border: 1px solid black;
+}
+.itemcolumn button:focus
+{
+ outline: none;
+}
+.itemcolumn button:active
+{
+    transform: scale(0.95);
+}
+.dealprice
+{
+    display:inline;
+font-size: 17px;
+font-family: 'Lato';
+
+}
+.orgprice
+{
+display:inline;
+font-size: 13px;
+font-family: 'Lato';
+padding: 10px;
+}
+.hdeals
+{
+    color:#ec4c4c;
+    font-family: 'Bebas Neue';
+    font-size: 50px;
+    letter-spacing: 10px;
+    outline: 0;
+    text-align: center;
+    position: relative;
+}
+footer
+{
+    position: absolute;
+    top: 100;
+    left: 0;
+    text-align: center;
+    width: 100%;
+}
+
+.wrapper
+{
+    text-align: center;
+    width: 100%;
+}
+.productinfo a
+{
+    margin-left: 20px;
+    text-transform: uppercase;
+    background-color: rgb(66, 66, 66);
+    border: none;
+    color: #ebebeb;
+    padding: 10px;
+    text-transform: uppercase;
+    cursor:pointer;
+    border: 1px solid #666666;
+    text-decoration: none;
+    margin-bottom: 10px;
+    margin-top: 10px;
+
+}
+.kwvideo
+{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,0.9);
+    visibility: hidden;
+
+}
+.kwvideo.watching
+{
+    visibility: visible;
+}
+hr
+{
+    margin-top: 20px;
+}
+.kwvideo video
+{
+    position: relative;
+    max-width: 900px;
+    outline: none;
+}
+.exitbutton
+{
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    cursor: pointer;
+    
+
+}
+/* THIS IS FOR ITEM PAGES */
+
+.productimage
+{
+    width: 40%;
+    float: left;
+    position: relative;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+
+.columnmain
+{
+    margin-left: 20%;
+
+    margin-top:5%;
+    width:70%;
+    display: flex;
+}
+.productimage img
+{
+    height: 450px;
+    width: 450px;
+    max-height: 100%;
+    max-width: 100%;
+}
+.productinfo
+{
+    margin-top: -2%;
+    position: relative;
+    width: 60%;
+    float: left;
+    box-sizing: border-box;
+}
+.productdescription
+{
+    width: 100%;
+    position: relative;
+}
+.row1:after 
+{
+    content: "";
+    display: table;
+    clear: both;
+}
+.row1
+{
+    width: 100%;
+}
+.productinfo h1,h2,h3
+{
+    padding-left: 20px;
+}
+.productinfo p
+{
+    padding-left: 20px;
+}
+.productinfo button
+{
+    background-color: rgb(66, 66, 66);
+    border: none;
+    color: #ebebeb;
+    padding: 10px;
+    text-transform: uppercase;
+    cursor:pointer;
+    border: 1px solid #666666;
+}
+.productinfo button:hover
+{
+    transition:all ease 0.1s;
+    background-color: #ec4c4c;
+    border: 1px solid black;
+}
+.productinfo button:focus
+{
+ outline: none;
+}
+.productinfo button:active
+{
+    transform: scale(0.95);
+}
+input
+{
+    width: 5%;
+    padding: 10px;
+    text-align: center;
+    background-color: rgb(66, 66, 66);
+    border: none;
+    outline: none;
+    border: 1px solid #666666;
+    color: #ebebeb;
+    margin-left: 5px;
+}
+.quantityp
+{
+ display: inline-block;
+}
+.productinfo h1
+{
+    color : #ebebeb;
+    font-family: 'Lato';
+    letter-spacing: 2px;
+    font-size: 30px;
+    font-weight: 200;
+}
+.productinfo h2
+{
+    color: #ec4c4c;
+    font-family: 'Lato';
+    font-size: 25px;
+    font-weight: 200;
+}
+.productinfo h3
+{
+    color: #ec4c4c;
+    font-family: 'Lato';
+    font-size: 20px;
+    font-weight: 200;
+}
+.productinfo li,p
+{
+    color : #ebebeb;
+    font-family: 'Lato';
+    font-size: 20px;
+    font-weight: 200;
+}
+.quantityp
+{
+    color : #ec4c4c;
+    font-family: 'Lato';
+    font-size: 20px;
+    font-weight: 200;
+    text-transform: uppercase;
+}
+.productinfo input:hover
+{
+    transition:all ease 0.1s;
+    background-color: #ec4c4c;
+    border: 1px solid black;
+}
+.descriptioninfo
+{
+    height: 110px;
+}
+.ender
+{
+text-align: center;
+font-family: 'Bebas Neue';
+color:darkgray;
+font-weight: 1;
+letter-spacing: 3px;
+font-size: 8px;
+
+}
+.darker
+{
+    overflow: hidden;
+    padding: 0px;
+    margin: 0px;
+    background-color: rgba(0,0,0,0.4);
+}
+.lighter
+{
+    overflow: hidden;
+    padding: 0px;
+    margin: 0px;
+}
+.largefont .navi ul li a
+{
+    font-size: 30px;
+}
+.smallfont .navi ul li a
+{
+    font-size: 20px;
+}
+.normalfont .navi ul li a
+{
+    font-size: 25px;
+}
+
+
+
+@media all and (max-width : 1150px) 
+{
+    .productinfo a
+    {
+        margin-left: 0px;
+    }
+    .kwvideo video
+    {
+        max-width: 90%;
+    }
+
+
+
+    .columnmain
+    {
+        width: 100%;
+       margin: 0;
+       text-align: center;
+    }
+    .productimage
+    {
+        margin-top: 5%;
+        width: 100%;
+        float: none;
+        position: none;
+        box-sizing: none;
+    }
+    .productimage img
+    {
+        width: 50%;
+        height: 50%;
+    }
+    .productinfo
+    {
+        float: none;
+        width: 100%;
+    }   
+    .productinfo h1
+    {
+        font-size: 30px;
+        padding: 0;
+    }
+    .productinfo p
+    {
+        padding: 0;
+    }
+    .productinfo h2,h3
+    {
+        padding: 0;
+    }
+    .productinfo li,p
+    {
+        padding: 0;
+        font-size: 18px;
+    }
+    .productinfo ul 
+    {
+        list-style-type:none;
+        padding: 0;
+    }
+
+
+
+
+
+
+    .navi img
+    {
+        display: none;
+    }
+    .navi ul
+    {
+        width: 100%;
+    }
+    .navi ul li 
+    {
+        text-align: center;
+        width: 100%;
+    }
+    .navi a
+    {
+        padding: 0px;
+        line-height: 0px;
+    }
+    .navi ul li a
+    {
+        padding-bottom: 20px;
+        clear: both;
+        text-align: center;
+        font-size: 20px;
+        letter-spacing: 10px;
+    } 
+    .navi a:hover
+    {
+        background-color: #ec4c4c;
+        opacity: 70%;
+    }
+    .navi ul li a:hover
+    {
+        color: #293036;
+    }
+
+
+    .largefont .navi ul li a
+    {
+        font-size: 30px;
+    }
+.smallfont .navi ul li a
+    {
+        font-size: 15px;
+    }
+.normalfont .navi ul li a
+    {
+        font-size: 25px;
+    }
+.itemcolumn
+{
+    width: 100%;
+}
+
+}
+
+@media all and (max-width : 375px) 
+{
+    .productimage img
+    {
+        width: 80%;
+        height: 80%;
+    }
+}

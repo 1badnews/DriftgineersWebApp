@@ -1,0 +1,327 @@
+@font-face
+{
+    font-family: 'Lato';
+    src: url('Lato-Regular.ttf');
+}
+@font-face
+{
+    font-family: 'Bebas Neue';
+    src: url('BebasNeue-Regular.ttf');
+}
+
+
+html
+{  
+    background: url(backgroundloginregister.png) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100vh;
+}
+
+
+body
+
+{
+
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    max-width:100%;
+}
+
+.navi
+{
+    overflow: hidden;
+    padding: 0px;
+    margin: 0px;
+    background-color: rgba(0,0,0,0.3);
+}
+.navi ul
+{ 
+
+    max-width:100%;
+    text-align: right;
+    float: right;
+}
+.navi ul li{
+    list-style: none;
+    display: inline-block;
+    cursor: pointer;
+}
+.navi ul li a
+{
+    display:block;
+    text-decoration:none;
+    text-transform:uppercase;
+    font-size: 25px;
+    padding: 25px;
+    color: #ebebeb;
+    letter-spacing: 2px;
+    font-weight: 500;
+    font-family: 'Lato';
+}
+.navi ul li a:hover
+{
+    transition:all ease 0.5s;
+    color: #ec4c4c;
+}
+.navi img
+{
+    width: auto;
+    padding-top: 10px;
+    padding-left: 25px;
+}
+.navi ul li a.active
+{
+    color:#ec4c4c;
+}
+
+h2
+{
+    text-align: center;
+    width: 100%;
+    color: #ec4c4c;
+    text-transform:uppercase;
+    font-family: 'Bebas Neue';
+    font-size: 50px;
+    letter-spacing: 5px;
+    margin-top: 25px;
+}
+form
+{
+    overflow: hidden;
+    background-color: rgb(0, 0, 0, 0.5);
+    margin-top:50px;
+    width: 500px;
+    padding: 20px;
+    border-radius: 15px;
+}
+input
+{
+    
+    margin-top: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 2px;
+    padding-right: 2px;
+
+    text-align: center;
+    width:100%;
+    position: relative;
+    background-color: transparent;
+    border-color: black;
+    border-style:groove;
+    border-radius: 15px;
+    font-family: 'Lato';
+    color: #ebebeb;
+    font-weight: 100;
+    font-size: 20px;
+    
+}
+.ender
+{
+text-align: center;
+font-family: 'Bebas Neue';
+color:darkgray;
+font-weight: 1;
+letter-spacing: 3px;
+font-size: 8px;
+}
+footer
+{
+    position: absolute;
+    top: 100;
+    left: 0;
+    text-align: center;
+    width: 100%;
+}
+input:focus
+{
+    transition:all ease 0.1s;
+    border-color: #ec4c4c;
+    border-style:groove;
+    outline: none;
+}
+::placeholder
+{
+    color: white;
+    opacity: 0.5;
+}
+input[type=submit]
+{
+    background-color: rgba(0, 0, 0, 0.1);
+    outline: 0;
+    width: auto;
+    border-color: #ec4c4c;
+    border-style:groove;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 50px;
+    padding-right: 50px;
+    color: #ebebeb;
+    text-transform:uppercase;
+    font-family: 'Bebas Neue';
+
+}
+.wrapper
+{
+    
+    padding:10px;
+    align-items: center;
+    display:flex ;
+    flex-direction:column;
+    justify-content: center;
+    position: relative;
+}
+p
+{
+    font-family: 'Bebas Neue';
+    color: #ebebeb;
+    font-size: 20px;
+    font-weight: 500;
+}
+a
+{
+    font-family: 'Bebas Neue';
+    color: #ec4c4c;
+    font-size: 20px;
+    margin: 5px;
+}
+.wrapper2
+{
+    
+    padding:15px;
+    align-items: center;
+    display:flex ;
+    justify-content: center;
+    position: relative;
+    width: auto;
+    padding-bottom: 0;
+}
+.namesurname
+{
+    margin-right: 5px;
+    margin-left: 5px;
+    width: 100%;
+}
+
+.darker
+{
+    overflow: hidden;
+    padding: 0px;
+    margin: 0px;
+    background-color: rgba(0,0,0,0.4);
+}
+.lighter
+{
+    overflow: hidden;
+    padding: 0px;
+    margin: 0px;
+}
+.largefont .navi ul li a
+{
+    font-size: 30px;
+}
+.smallfont .navi ul li a
+{
+    font-size: 20px;
+}
+.normalfont .navi ul li a
+{
+    font-size: 25px;
+}
+.validationsumerrors {
+    font-family: 'Bebas Neue';
+    color: #ec4c4c;
+    font-size: 20px;
+    font-weight: 250;
+}
+
+.validationsumerrors ul 
+{
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+
+
+@media all and (max-width : 1150px) 
+{
+
+
+
+    .navi img
+    {
+        display: none;
+    }
+    .navi ul
+    {
+        width: 100%;
+    }
+    .navi ul li 
+    {
+        text-align: center;
+        width: 100%;
+    }
+    .navi a
+    {
+        padding: 0px;
+        line-height: 0px;
+    }
+    .navi ul li a
+    {
+        margin: 0;
+        padding-bottom: 25px;
+        padding-top: 25px;
+        clear: both;
+        text-align: center;
+        font-size: 20px;
+        letter-spacing: 10px;
+    } 
+    .navi a:hover
+    {
+        background-color: #ec4c4c;
+        opacity: 70%;
+    }
+    .navi ul li a:hover
+    {
+        color: #293036;
+    }
+    form 
+    {
+        width: 300px;
+        margin: auto;
+        text-align: center;
+    }
+    .wrapper
+    {
+        margin-top: 15px;
+        padding: 0px;
+    }
+    h2
+    {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    .namesurname
+    {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .wrapper2
+    {
+        padding: 0px;
+        display: block;
+    }
+    .wrapper
+    {
+        display: block;
+    }
+
+}
+
+
+

@@ -1,0 +1,20 @@
+﻿@page
+@model WebApplication1.Pages.AdminpageModel
+@{
+}
+<form method="post" asp-page-handler="Add">
+    <label for="fname">id:</label><br>
+    <input type="text" asp-for="@Model.Products.Id" readonly><br>
+    <label for="fname">First name:</label><br>
+    <input type="text" asp-for="@Model.Products.Name"><br>
+    <label for="lname">Last name:</label><br>
+    <input type="text" asp-for="@Model.Products.Description"><br><br>
+    <label for="fname">price:</label><br>
+    <input type="text" asp-for="@Model.Products.Price"><br>
+    <label for="fname">photo:</label><br>
+    <input type="text" asp-for="@Model.Products.ProductImage"><br>
+    <input type="submit" value="Submit">
+</form>
+<br>
+<br>
+
