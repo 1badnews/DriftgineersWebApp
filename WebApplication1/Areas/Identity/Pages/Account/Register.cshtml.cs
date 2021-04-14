@@ -20,17 +20,20 @@ namespace WebApplication1.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class RegisterModel : PageModel
     {
+        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly SignInManager<AppUser> _signInManager;
         private readonly UserManager<AppUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
 
         public RegisterModel(
+            RoleManager<IdentityRole> roleManager,
             UserManager<AppUser> userManager,
             SignInManager<AppUser> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender)
         {
+            _roleManager = roleManager;
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
@@ -73,10 +76,26 @@ namespace WebApplication1.Areas.Identity.Pages.Account
         {
             returnUrl ??= Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+            var role = new IdentityRole();
+            if (!await _roleManager.RoleExistsAsync("Admin"))
+            {
+                role.Name = "Admin";
+                await _roleManager.CreateAsync(role);
+            }
+            else if (!await _roleManager.RoleExistsAsync("Visitor"))
+            {
+                role.Name = "Visitor";
+                await _roleManager.CreateAsync(role);
+            }
+            else
+            {
+                role.Name = "Visitor";
+            }
             if (ModelState.IsValid)
             {
                 var user = new AppUser { UserName = Input.Email, Email = Input.Email };
                 var result = await _userManager.CreateAsync(user, Input.Password);
+                await _userManager.AddToRoleAsync(user, role.Name);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
