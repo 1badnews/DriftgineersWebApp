@@ -31,7 +31,7 @@ namespace WebApplication1.Pages
         {
             _db.Remove(_db.Product.Find(Id));
             _db.SaveChanges();
-            return Page();
+            return RedirectToPage("shop");
         }
 
     }
