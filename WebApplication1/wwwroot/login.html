@@ -26,17 +26,18 @@
     </section>
     <div class="wrapper">
 
-        <form name="myform" method="post">
+        <form name="myform" method="post" id="account">
             <h2>Log in</h2>
 
             <div class="wrapper">
-                <input type="text" name="email" placeholder="Email" id="email">
+                <input type="text" name="email" placeholder="Email" id="email" asp-for="Input.Email">
 
-                <input type="password" name="password" placeholder="Password" id="password">
+                <input type="password" name="password" placeholder="Password" id="password" asp-for="Input.Password">
 
                 <input type="submit" name="submit" placeholder="Login" value="Login" id="submit" onclick="validate();">
 
                 <p class="noacc">Haven't registered yet? <a href="register.html">Sign Up Now!</a></p>
+                <div class="validationsumerrors" asp-validation-summary="All"></div>
             </div>
         </form>
     </div>

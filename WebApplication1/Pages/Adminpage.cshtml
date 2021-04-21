@@ -11,21 +11,42 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
+<h1 class="text-center">Admin Panel</h1>
+<br />
+<br />
+<h2 class="text-center">Product Manager</h2>
+<br />
 <form method="post" asp-page-handler="Add">
-    <label for="fname">id:</label><br>
-    <input type="text" asp-for="@Model.Products.Id" readonly><br>
-    <label for="fname">First name:</label><br>
-    <input type="text" asp-for="@Model.Products.Name"><br>
-    <label for="lname">Last name:</label><br>
-    <input type="text" asp-for="@Model.Products.Description"><br><br>
-    <label for="fname">price:</label><br>
-    <input type="text" asp-for="@Model.Products.Price"><br>
-    <label for="fname">photo:</label><br>
-    <input type="text" asp-for="@Model.Products.ProductImage"><br>
-    <input type="submit" value="Submit">
+    <div class="container">
+        <div class="">
+            <div class="form-group col-sm-6 col-sm-offset-3">
+                <label for="productid">Product ID:</label>
+                <input type="text" class="form-control" placeholder="Product ID" asp-for="@Model.Products.Id" readonly>
+
+            </div>
+            <div class="form-group col-sm-6 col-sm-offset-3">
+                <label for="productname">Product Name:</label>
+                <input type="text" class="form-control" placeholder="Product Name" asp-for="@Model.Products.Name">
+            </div>
+            <div class="form-group col-sm-6 col-sm-offset-3">
+                <label for="productprice">Product Price:</label>
+                <input type="text" class="form-control" placeholder="Product Price" asp-for="@Model.Products.Price">
+            </div>
+            <div class="form-group col-sm-6 col-sm-offset-3">
+                <label for="productimage">Product Image:</label>
+                <input type="text" class="form-control" placeholder="Product Image (include extension)" asp-for="@Model.Products.ProductImage">
+            </div>
+
+            <div class="form-group col-sm-6 col-sm-offset-3">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </div>
 </form>
 <br>
 <br>
+<h2 class="text-center">Role Manager</h2>
+<br />
 <table class="table table-striped">
     <thead>
         <tr>
@@ -43,14 +64,28 @@
                 <td><a class="btn btn-sm btn-danger order-button float-right" asp-page="/Adminpage" asp-route-RoleId="@role.Id" asp-page-handler="DeleteRole">Delete Role</a></td>
             </tr>
         }
-        <form method="post" asp-page-handler="AddRole">
-            <input name="roleName" />
-            <button type="submit"></button>
+    <form method="post" asp-page-handler="AddRole">
+        <div class="container">
+            <div class="form-group col-sm-6 col-sm-offset-3">
+                <input type="text" name="roleName" placeholder="Add Role" class="form-control">
 
-        </form>
+
+            </div>
+            <div class="form-group col-sm-6 col-sm-offset-3">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+
+        </div>
+        
+        
+        
+    </form>
+
     </tbody>
 </table>
 <br />
+<br />
+<h2 class="text-center">User Manager</h2>
 <br />
 <table class="table table-striped"> 
     <thead>
@@ -59,6 +94,7 @@
             <th>First Name</th>
             <th>Last Name</th>
             <th>Email</th>
+            <th>Password Manager</th>
             <th>Manager</th>
         </tr>
     </thead>
