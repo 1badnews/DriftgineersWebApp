@@ -231,6 +231,12 @@ namespace WebApplication1.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ProductImage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
                     b.Property<double>("price")
                         .HasColumnType("float");
 
@@ -257,6 +263,9 @@ namespace WebApplication1.Migrations
 
                     b.Property<string>("ProductImage")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

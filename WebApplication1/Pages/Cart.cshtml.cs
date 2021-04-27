@@ -15,10 +15,48 @@ namespace WebApplication1.Pages
         public readonly AppDataContext _db;
 
         [BindProperty(SupportsGet =true)]
-        public string Id { get; set; }
+        public int Id { get; set; }
         public double total { get; set; }
+
+
+        public Cart cart1 { get; set; }
         public CartModel(AppDataContext db) { _db = db; }
 
+        public IActionResult OnGetAddOne(int Id)
+        {
+            cart1 = _db.Cart.Find(Id);
+            cart1.price = cart1.price / cart1.Quantity;
+            cart1.Quantity = cart1.Quantity + 1;
+            cart1.price = cart1.price * cart1.Quantity;
+
+            _db.SaveChanges();
+            return RedirectToPage("cart");
+            
+        }
+
+        public IActionResult OnGetRemoveOne()
+        {
+           
+            cart1 = _db.Cart.Find(Id);
+                if (cart1.Quantity == 1)
+                {
+                    return RedirectToPage("cart");
+                }
+            
+                cart1.price = cart1.price / cart1.Quantity;
+            cart1.Quantity = cart1.Quantity - 1;
+            cart1.price = cart1.price * cart1.Quantity;
+            _db.SaveChanges();
+            return RedirectToPage("cart");
+        
+
+    }
+        public IActionResult OnGetDelete(int Id)
+        {
+            _db.Remove(_db.Cart.Find(Id));
+            _db.SaveChanges();
+            return RedirectToPage("cart");
+        }
         public void OnGet()
         {
             products = _db.Product.ToList();

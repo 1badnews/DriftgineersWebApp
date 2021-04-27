@@ -15,6 +15,10 @@ namespace WebApplication1.Models
 
         public double price { get; set; }
 
+        public string ProductImage { get; set; }
+
+        public int Quantity { get; set; }
+
 
     }
 }

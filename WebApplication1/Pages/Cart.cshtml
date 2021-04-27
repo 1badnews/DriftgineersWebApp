@@ -3,22 +3,95 @@
 @{
 }
 
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<html>
+<head>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="~/shop.css">
 
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <section class="control">
+        <header class="navi">
+            
+                <h1 class="ender"> Copyright. Aras Butrimanskas - N0844425 NTU </h1>
+            
+            <a href="index.html"><img class="pt-0" src="~/logosmall.png" alt="driftgineers logo"></a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop">Shop</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a class="active" href="#">Cart</a></li>
+            </ul>
+        </header>
+    </section>
 
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <div class="container bootstrap snippets bootdey">
+        <div class="col">
+            
+            <div class="row">
+                <div class="col">
+                    <div class="panel panel-info panel-shadow">
+                        <div class="panel-heading">
+                            <h1 class="hdeals text-center mb-5 mt-5">
+
+                                Cart
+                            </h1>
+                            <br />
+                            <br />
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table text-center">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Product</th>
+                                            <th>Quantity</th>
+                                            <th>Price (incl. VAT)</th>
+                                            <th></th>
 
 
-<div class="row">
-    <div class="col">
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.cart)
+                                        {
+                                            <tr>
+                                                <td></td>
+                                                <td><strong>@item.Name</strong></td>
+                                                <td>
+                                                   
+                                                    <a asp-route-id="@item.Id" asp-page-handler="AddOne"><button>+</button></a>
+                                                    <label class="text-center">@item.Quantity</label>
+                                                    <a asp-route-id="@item.Id" asp-page-handler="RemoveOne"><button>=</button></a>
+                                            
+                                                </td>
+                                                <td>&euro;@item.price</td>
+                                                <td><a asp-route-id="@item.Id" asp-page-handler="Delete"><button class="removefromcart">Remove</button></a></td>
 
-        <br />
-        <br />
-        <br />
-        <h1>@Model.total</h1>
+                                            </tr>
+                                        }
+
+                                        
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td colspan="4" class="text-right"><strong>Total: &euro;@Model.total</strong></td>
+
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="addtocart">Continue Shopping</button>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+</body>
+</html>
