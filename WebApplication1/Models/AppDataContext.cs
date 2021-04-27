@@ -14,5 +14,7 @@ namespace WebApplication1.Models
         base(options)
         { }
         public DbSet<Product> Product { get; set; }
+
+        public DbSet<Cart> Cart { get; set; }
     }
     }
