@@ -52,6 +52,7 @@ namespace WebApplication1.Pages
             {
                 cart.Name = product.Name;
                 cart.price = product.Price;
+                cart.ProductImage = product.ProductImage;
                 cart.Quantity = 1;
 
                 _db.Cart.Add(cart);
@@ -75,6 +76,7 @@ namespace WebApplication1.Pages
             cart.Name = product.Name;
             cart.price = product.Price;
             cart.Quantity = 1;
+            cart.ProductImage = product.ProductImage;
 
             _db.Cart.Add(cart);
             _db.SaveChanges();
