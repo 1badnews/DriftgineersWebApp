@@ -35,7 +35,7 @@
                 <div class="block-heading">
                     <h2>Payment</h2>
                 </div>
-                <form>
+                <form method="post">
                     <div class="products">
                         <h3 class="title">Checkout</h3>
                         @foreach (var item in Model.cart)
@@ -49,63 +49,71 @@
 
                         <div class="total">Total<span class="price">&euro;@Model.total</span></div>
                     </div>
-                    <div class="card-details">
-                        <h3 class="title">Billing Information</h3>
-                        <div class="row">
-                            <div class="form-group col-sm-7">
-                                <label class="blacktext" for="card-holder">Card Holder Name</label>
-                                <input id="card-holder" type="text" class="form-control" placeholder="Card Holder" aria-label="Card Holder" aria-describedby="basic-addon1">
-                            </div>
-                            <div class="form-group col-sm-5">
-                                <label for="">Expiration Date</label>
-                                <div class="input-group expiration-date">
-                                    <input type="text" class="form-control" placeholder="MM" aria-label="MM" aria-describedby="basic-addon1">
-                                    <span class="date-separator">/</span>
-                                    <input type="text" class="form-control" placeholder="YY" aria-label="YY" aria-describedby="basic-addon1">
+                        <div class="card-details">
+                            <h3 class="title">Billing Information</h3>
+                            <div class="row">
+                                <div class="form-group col-sm-7">
+                                    <label class="blacktext" for="card-holder">Card Holder Name</label>
+                                    <input id="card-holder" asp-for="cardname" type="text" class="form-control" placeholder="Card Holder">
+                                    <span asp-validation-for="cardname" class="text-danger"></span>
+                                </div>
+                                <div class="form-group col-sm-5">
+                                    <label for="">Expiration Date</label>
+                                    <div class="input-group expiration-date">
+                                        <input type="text" class="form-control" placeholder="MM">
+                                        <span class="date-separator">/</span>
+                                        <input type="text" class="form-control" placeholder="YY">
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-8">
+                                    <label for="card-number">Card Number</label>
+                                    <input id="card-number" asp-for="cardno" type="text" class="form-control" placeholder="Card Number" />
+                                    <span asp-validation-for="cardno" class="text-danger"></span>
+                                </div>
+                                <div class="form-group col-sm-4">
+                                    <label for="cvc">CVC</label>
+                                    <input id="cvc" asp-for="cvc" type="text" class="form-control" placeholder="CVC" aria-label="Card Holder" aria-describedby="basic-addon1">
+                                    <span asp-validation-for="cvc" class="text-danger"></span>
                                 </div>
                             </div>
-                            <div class="form-group col-sm-8">
-                                <label for="card-number">Card Number</label>
-                                <input id="card-number" type="text" class="form-control" placeholder="Card Number" aria-label="Card Holder" aria-describedby="basic-addon1">
-                            </div>
-                            <div class="form-group col-sm-4">
-                                <label for="cvc">CVC</label>
-                                <input id="cvc" type="text" class="form-control" placeholder="CVC" aria-label="Card Holder" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="card-details">
+                            <h3 class="title">Shipping Information</h3>
+                            <div class="row">
+                                <div class="form-group col-sm-6">
+                                    <label for="Name">Name</label>
+                                    <input id="Firstname" asp-for="name" type="text" class="form-control" placeholder="Name">
+                                    <span asp-validation-for="name" class="text-danger"></span>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label for="Surname">Surname</label>
+                                    <input id="Surname" asp-for="surname" type="text" class="form-control" placeholder="Surname">
+                                    <span asp-validation-for="surname" class="text-danger"></span>
+                                </div>
+                                <div class="form-group col-sm-12">
+                                    <label for="Address">Address</label>
+                                    <input id="Address" asp-for="address" type="text" class="form-control" placeholder="Address">
+                                    <span asp-validation-for="address" class="text-danger"></span>
+                                </div>
+                                <div class="form-group col-sm-7">
+                                    <label for="Country">Country</label>
+                                    <input id="Country" asp-for="country" type="text" class="form-control" placeholder="Country">
+                                    <span asp-validation-for="country" class="text-danger"></span>
+                                </div>
+                                <div class="form-group col-sm-5">
+                                    <label for="PostCode">Post Code</label>
+                                    <input id="PostCode" asp-for="post" type="text" class="form-control" placeholder="Post Code">
+                                    <span asp-validation-for="post" class="text-danger"></span>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <a asp-page="cart"><button type="button" class="btn addtocart">Back To Cart</button></a>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <a asp-page-handler="Checkout"><button type="submit" class="btn addtocart right">Purchase</button></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="card-details">
-                        <h3 class="title">Shipping Information</h3>
-                        <div class="row">
-                            <div class="form-group col-sm-6">
-                                <label for="Name">Name</label>
-                                <input id="Firstname" type="text" class="form-control" placeholder="Name">
-                            </div>
-                            <div class="form-group col-sm-6">
-                                <label for="Surname">Surname</label>
-                                <input id="Surname" type="text" class="form-control" placeholder="Surname">
-                            </div>
-                            <div class="form-group col-sm-12">
-                                <label for="Address">Address</label>
-                                <input id="Address" type="text" class="form-control" placeholder="Address">
-                            </div>
-                            <div class="form-group col-sm-7">
-                                <label for="Country">Country</label>
-                                <input id="Country" type="text" class="form-control" placeholder="Country">
-                            </div>
-                            <div class="form-group col-sm-5">
-                                <label for="PostCode">Post Code</label>
-                                <input id="PostCode" type="text" class="form-control" placeholder="Post Code">
-                            </div>
-                            <div class="form-group col-sm-6">
-                                <button type="button" class="btn btn-primary btn-block">Back To Cart</button>
-                            </div>
-                            <div class="form-group col-sm-6">
-                                <button asp-page-handler="Checkout" type="button" class="btn btn-primary btn-block">Purchase</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+                    </form>
             </div>
         </section>
     </main>

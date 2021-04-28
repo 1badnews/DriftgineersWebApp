@@ -12,9 +12,35 @@
     margin-bottom: 40px;
     text-align: center;
 }
+.addtocart {
+	background-color: rgb(66, 66, 66);
+	border: none;
+	color: #ebebeb;
+	padding: 10px;
+	text-transform: uppercase;
+	cursor: pointer;
+	border: 1px solid #666666;
+	margin: 2%;
+}
 
+	.addtocart:hover {
+		transition: all ease 0.1s;
+		background-color: #ec4c4c;
+		border: 1px solid black;
+	}
 
+	.addtocart:focus {
+		outline: none;
+	}
 
+	.addtocart:active {
+		transform: scale(0.95);
+	}
+
+.right
+{
+	float: right;
+}
 
 
 	.payment-form .block-heading h1,
@@ -105,11 +131,6 @@
 	text-transform: uppercase;
 }
 
-.payment-form .card-details button{
-	margin-top: 0.6em;
-	padding:12px 0;
-	font-weight: 600;
-}
 
 .payment-form .date-separator{
  	margin-left: 10px;
