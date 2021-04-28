@@ -1,0 +1,38 @@
+﻿@font-face {
+    font-family: 'Lato';
+    src: url('Lato-Regular.ttf');
+}
+.table-responsive {
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 5%;
+    padding-bottom: 2%;
+    border-radius: 25px;
+    background-color: #777;
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid rgba(0,0,0,0.2);
+    border-top: 1px solid rgba(0,0,0,0.2);
+}
+.table td, .table th {
+
+    padding: .75rem;
+    vertical-align: top;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+.total {
+    color: whitesmoke;
+    font-weight: 500;
+    font-family: 'Lato';
+    font-size: 20px;
+}
+.info {
+    font-weight: 500;
+    font-family: 'Lato';
+    font-size: 20px;
+}

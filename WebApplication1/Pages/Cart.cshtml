@@ -8,19 +8,18 @@
     <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="~/shop.css">
+    <link rel="stylesheet" type="text/css" href="~/cart.css">
 
 </head>
 <body>
     <section class="control">
         <header class="navi">
-            
                 <h1 class="ender"> Copyright. Aras Butrimanskas - N0844425 NTU </h1>
             
             <a href="index.html"><img class="pt-0" src="~/logosmall.png" alt="driftgineers logo"></a>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="shop">Shop</a></li>
-                <li><a href="login.html">Login</a></li>
+                <li><a asp-page="Index">Home</a></li>
+                <li><a asp-page="Shop">Shop</a></li>
                 <li><a class="active" href="#">Cart</a></li>
             </ul>
         </header>
@@ -47,9 +46,9 @@
                                     <thead>
                                         <tr>
                                             <th></th>
-                                            <th>Product</th>
-                                            <th>Quantity</th>
-                                            <th>Price (incl. VAT)</th>
+                                            <th class="total">Product</th>
+                                            <th class="total">Quantity</th>
+                                            <th class="total">Price (incl. VAT)</th>
                                             <th></th>
 
 
@@ -60,36 +59,30 @@
                                         {
                                             <tr>
                                                 <td></td>
-                                                <td><strong>@item.Name</strong></td>
-                                                <td>
-                                                   
-                                                    <a asp-route-id="@item.Id" asp-page-handler="AddOne"><button>+</button></a>
-                                                    <label class="text-center">@item.Quantity</label>
-                                                    <a asp-route-id="@item.Id" asp-page-handler="RemoveOne"><button>=</button></a>
-                                            
+                                                <td class="info"><strong>@item.Name</strong></td>
+                                                <td class="">
+
+                                                    <a asp-route-id="@item.Id" asp-page-handler="AddOne"><button class="addremoveone">+</button></a>
+                                                    <strong class="text-center info">@item.Quantity</strong>
+                                                    <a asp-route-id="@item.Id" asp-page-handler="RemoveOne"><button class="addremoveone">-</button></a>
+
                                                 </td>
-                                                <td>&euro;@item.price</td>
+                                                <td class="info"><strong>&euro;@item.price</strong></td>
                                                 <td><a asp-route-id="@item.Id" asp-page-handler="Delete"><button class="removefromcart">Remove</button></a></td>
 
                                             </tr>
                                         }
-
-                                        
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td colspan="4" class="text-right"><strong>Total: &euro;@Model.total</strong></td>
-
-                                    </tr>
                                     </tbody>
+                                    <p class="total ml-4"><strong>Cart</strong></p>
                                 </table>
+                                <p class="text-right total">Total: &euro;@Model.total</p></td>
                             </div>
                         </div>
                     </div>
-                    <button class="addtocart">Continue Shopping</button>
-                </div>
+
+                    <a asp-page="shop"><button class="addtocart">Continue Shopping</button></a>
+                    <a asp-page="checkout"><button class="addtocart floatright">Checkout</button></a>
+</div>
             </div>
         </div>
     </div>

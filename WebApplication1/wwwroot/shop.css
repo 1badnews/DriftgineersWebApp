@@ -136,6 +136,30 @@ font-family: 'Lato';
 {
     transform: scale(0.95);
 }
+
+.button1 {
+    background-color: rgb(66, 66, 66);
+    border: none;
+    color: #ebebeb;
+    padding: 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: 2px solid #666666;
+}
+
+    .button1:hover {
+        transition: all ease 0.1s;
+        background-color: #ec4c4c;
+        border: 1px solid black;
+    }
+
+    .button1:focus {
+        outline: none;
+    }
+
+    .button1:active {
+        transform: scale(0.95);
+    }
 .dealprice
 {
     display:inline;
@@ -323,6 +347,25 @@ input
     color: #ebebeb;
     margin-left: 5px;
 }
+.searchbar {
+    width: 20%;
+    padding: 10px;
+    text-align: center;
+    background-color: rgb(66, 66, 66);
+    border: none;
+    outline: none;
+    border: 2px solid #666666;
+    color: #ebebeb;
+    margin-left: 2%;
+    margin-top: 5px;
+
+}
+    .searchbar:focus {
+        transition: all ease 0.3s;
+        border-color: #ec4c4c;
+        border-style: groove;
+        outline: none;
+    }
 .quantityp
 {
  display: inline-block;
@@ -422,6 +465,7 @@ font-size: 8px;
     text-transform: uppercase;
     cursor: pointer;
     border: 1px solid #666666;
+    margin: 2%;
 }
 .addtocart:hover 
 {
@@ -440,16 +484,43 @@ font-size: 8px;
         transform: scale(0.95);
 }
 
+.floatright
+{
+    float: right;
+}
 .removefromcart {
     background-color: rgb(66, 66, 66);
     border: none;
     color: #ebebeb;
-    padding: 10px;
+    padding: 5px;
     text-transform: uppercase;
     cursor: pointer;
     border: 1px solid #666666;
     border-radius: 12px;
 }
+.addremoveone {
+    background-color: rgb(66, 66, 66);
+    border: none;
+    color: #ebebeb;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: 1px solid #666666;
+    border-radius: 12px;
+}
+    .addremoveone:hover {
+        transition: all ease 0.1s;
+        background-color: #ec4c4c;
+        border: 1px solid black;
+    }
+
+    .addremoveone:focus {
+        outline: none;
+    }
+
+    .addremoveone:active {
+        transform: scale(0.95);
+    }
+
 
     .removefromcart:hover {
         transition: all ease 0.1s;

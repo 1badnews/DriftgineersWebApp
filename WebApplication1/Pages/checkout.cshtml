@@ -1,0 +1,115 @@
+﻿@page
+@model WebApplication1.Pages.checkoutModel
+@{
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="~/shop.css">
+    <link rel="stylesheet" type="text/css" href="~/checkout.css">
+</head>
+<body>
+    <section class="control">
+        <header class="navi">
+
+
+            <h1 class="ender"> Copyright. Aras Butrimanskas - N0844425 NTU </h1>
+
+            <a href="index.html"><img class="pt-0" src="~/logosmall.png" alt="driftgineers logo"></a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop">Shop</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a class="active" href="#">Cart</a></li>
+            </ul>
+        </header>
+    </section>
+    <main class="page payment-page">
+        <section class="payment-form dark">
+            <div class="container">
+                <div class="block-heading">
+                    <h2>Payment</h2>
+                </div>
+                <form>
+                    <div class="products">
+                        <h3 class="title">Checkout</h3>
+                        @foreach (var item in Model.cart)
+                        {
+                            <div class="item">
+                                <span class="price">&euro;@item.price</span>
+                                <p class="item-name">@item.Name</p>
+                                <p class="item-description">Quantity: @item.Quantity</p>
+                            </div>
+                        }
+
+                        <div class="total">Total<span class="price">&euro;@Model.total</span></div>
+                    </div>
+                    <div class="card-details">
+                        <h3 class="title">Billing Information</h3>
+                        <div class="row">
+                            <div class="form-group col-sm-7">
+                                <label class="blacktext" for="card-holder">Card Holder Name</label>
+                                <input id="card-holder" type="text" class="form-control" placeholder="Card Holder" aria-label="Card Holder" aria-describedby="basic-addon1">
+                            </div>
+                            <div class="form-group col-sm-5">
+                                <label for="">Expiration Date</label>
+                                <div class="input-group expiration-date">
+                                    <input type="text" class="form-control" placeholder="MM" aria-label="MM" aria-describedby="basic-addon1">
+                                    <span class="date-separator">/</span>
+                                    <input type="text" class="form-control" placeholder="YY" aria-label="YY" aria-describedby="basic-addon1">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-8">
+                                <label for="card-number">Card Number</label>
+                                <input id="card-number" type="text" class="form-control" placeholder="Card Number" aria-label="Card Holder" aria-describedby="basic-addon1">
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label for="cvc">CVC</label>
+                                <input id="cvc" type="text" class="form-control" placeholder="CVC" aria-label="Card Holder" aria-describedby="basic-addon1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-details">
+                        <h3 class="title">Shipping Information</h3>
+                        <div class="row">
+                            <div class="form-group col-sm-6">
+                                <label for="Name">Name</label>
+                                <input id="Firstname" type="text" class="form-control" placeholder="Name">
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="Surname">Surname</label>
+                                <input id="Surname" type="text" class="form-control" placeholder="Surname">
+                            </div>
+                            <div class="form-group col-sm-12">
+                                <label for="Address">Address</label>
+                                <input id="Address" type="text" class="form-control" placeholder="Address">
+                            </div>
+                            <div class="form-group col-sm-7">
+                                <label for="Country">Country</label>
+                                <input id="Country" type="text" class="form-control" placeholder="Country">
+                            </div>
+                            <div class="form-group col-sm-5">
+                                <label for="PostCode">Post Code</label>
+                                <input id="PostCode" type="text" class="form-control" placeholder="Post Code">
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <button type="button" class="btn btn-primary btn-block">Back To Cart</button>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <button asp-page-handler="Checkout" type="button" class="btn btn-primary btn-block">Purchase</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</html>
