@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using WebApplication1.Models;
@@ -18,12 +19,13 @@ namespace WebApplication1.Pages
         [BindProperty]
         public List<Product> Products { get; set; }
         public List<Cart> carts { get; set; }
-
+        private readonly UserManager<AppUser> _userManager;
 
         [BindProperty(SupportsGet = true)]
         public int Id { get; set; }
-        public ShopModel(AppDataContext db)
+        public ShopModel(AppDataContext db, UserManager<AppUser> userManager)
         {
+            _userManager = userManager;
             _db = db;
         }
 
@@ -45,38 +47,28 @@ namespace WebApplication1.Pages
         {
             product = new Product();
             cart = new Cart();
-            carts = _db.Cart.ToList();
+            carts = _db.Cart.Where(e => e.UserID == _userManager.GetUserId(User)).ToList();
             product = _db.Product.Find(Id);
 
-            if (carts.Count() == 0)
-            {
-                cart.Name = product.Name;
-                cart.price = product.Price;
-                cart.ProductImage = product.ProductImage;
-                cart.Quantity = 1;
 
-                _db.Cart.Add(cart);
-                _db.SaveChanges();
-                return RedirectToPage("shop");
-            }
-            else
-            {
                 foreach (var item in carts)
                 {
-                    if (item.Name == product.Name)
+                    if (item.Name == product.Name && item.UserID == _userManager.GetUserId(User))
                     {
                         item.Quantity++;
                         _db.SaveChanges();
                         return RedirectToPage("shop");
 
                     }
+                    
                 }
 
-            }
+
             cart.Name = product.Name;
             cart.price = product.Price;
             cart.Quantity = 1;
             cart.ProductImage = product.ProductImage;
+            cart.UserID = _userManager.GetUserId(User);
 
             _db.Cart.Add(cart);
             _db.SaveChanges();

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using WebApplication1.Models;
@@ -17,10 +18,14 @@ namespace WebApplication1.Pages
         [BindProperty(SupportsGet =true)]
         public int Id { get; set; }
         public double total { get; set; }
-
+        private readonly UserManager<AppUser> _userManager;
 
         public Cart cart1 { get; set; }
-        public CartModel(AppDataContext db) { _db = db; }
+        public CartModel(AppDataContext db, UserManager<AppUser> userManager)
+        {
+            _userManager = userManager;
+            _db = db;
+        }
 
         public IActionResult OnGetAddOne(int Id)
         {
@@ -59,8 +64,10 @@ namespace WebApplication1.Pages
         }
         public void OnGet()
         {
+
             products = _db.Product.ToList();
-            cart = _db.Cart.ToList();
+            cart = _db.Cart.Where(e => e.UserID == _userManager.GetUserId(User)).ToList();
+
             total = 0;
             foreach(var item in cart)
             {

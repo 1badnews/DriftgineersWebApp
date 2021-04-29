@@ -19,6 +19,8 @@ namespace WebApplication1.Models
 
         public int Quantity { get; set; }
 
+        public string UserID { get; set; }
+
 
     }
 }

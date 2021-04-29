@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using WebApplication1.Models;
@@ -50,7 +51,9 @@ namespace WebApplication1.Pages
 
         public void GetCartDetails()
         {
-            cart = _db.Cart.ToList();
+
+            cart = _db.Cart.Where(e => e.UserID == _userManager.GetUserId(User)).ToList();
+
             total = 0;
             foreach (var item in cart)
             {
@@ -60,13 +63,18 @@ namespace WebApplication1.Pages
         }
 
         public Cart cart1 { get; set; }
-        public checkoutModel(AppDataContext db) { _db = db; }
+        public checkoutModel(AppDataContext db, UserManager<AppUser> userManager)
+        {
+            _userManager = userManager;
+            _db = db;
+        }
 
+        private readonly UserManager<AppUser> _userManager;
         public IActionResult OnPost()
         {
             if (ModelState.IsValid)
             {
-                _db.Cart.RemoveRange(_db.Cart);
+                _db.Cart.RemoveRange(_db.Cart.Where(e => e.UserID == _userManager.GetUserId(User)));
                 _db.SaveChanges();
 
                 return RedirectToPage("cart");
