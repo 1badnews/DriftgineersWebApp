@@ -12,16 +12,16 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Pages
 {
-    [Authorize (Roles="Admin")]
+    [Authorize(Roles = "Admin")]
     public class AdminpageModel : PageModel
     {
-        
+
         public readonly AppDataContext _db;
 
         [BindProperty]
         public Product Products { get; set; }
 
-        [BindProperty (SupportsGet =true)]
+        [BindProperty(SupportsGet = true)]
         public int Id { get; set; }
 
         [BindProperty(SupportsGet = true)]
@@ -33,7 +33,8 @@ namespace WebApplication1.Pages
         [BindProperty(SupportsGet = true)]
         public string roleName { get; set; }
 
-
+        [BindProperty(SupportsGet = true)]
+        public Dictionary<string, string> currentrole { get; set; }
 
 
         [BindProperty(SupportsGet=true)]
@@ -50,12 +51,19 @@ namespace WebApplication1.Pages
         public List<AppUser> users { get; set; }
         public List<IdentityRole> roles { get; set; }
       
-        public void OnGet()
+        public async Task<IActionResult> OnGetAsync()
         {
+           
             roles = _roleManager.Roles.ToList();
             
             Products = _db.Product.Find(Id);
             users = _userManager.Users.ToList();
+            foreach (var user in users)
+            {
+                var currentRoles = await _userManager.GetRolesAsync(user);
+                currentrole.Add(user.Id, currentRoles[0].ToString());
+            }
+            return Page();
         }
         public async Task<IActionResult> OnGetDeleteUserAsync()
         {
@@ -68,7 +76,7 @@ namespace WebApplication1.Pages
 
         }
 
-        public async Task<IActionResult> OnPostChangePasswordAsync() // ????????????????????????? WHY
+        public async Task<IActionResult> OnPostChangePasswordAsync() 
         {
 
             var users = await _userManager.FindByIdAsync(UserId);

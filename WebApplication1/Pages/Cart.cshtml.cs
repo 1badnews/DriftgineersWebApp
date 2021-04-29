@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -9,6 +10,7 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Pages
 {
+    [Authorize]
     public class CartModel : PageModel
     {
         public List<Product> products { get; set; }
@@ -20,6 +22,8 @@ namespace WebApplication1.Pages
         public double total { get; set; }
         private readonly UserManager<AppUser> _userManager;
 
+        [BindProperty(SupportsGet = true)]
+        public string customername { get; set; }
         public Cart cart1 { get; set; }
         public CartModel(AppDataContext db, UserManager<AppUser> userManager)
         {
@@ -62,9 +66,9 @@ namespace WebApplication1.Pages
             _db.SaveChanges();
             return RedirectToPage("cart");
         }
-        public void OnGet()
+        public async void OnGetAsync()
         {
-
+            customername = _userManager.GetUserAsync(User).Result.FirstName;
             products = _db.Product.ToList();
             cart = _db.Cart.Where(e => e.UserID == _userManager.GetUserId(User)).ToList();
 
@@ -74,6 +78,7 @@ namespace WebApplication1.Pages
                 total = total + item.price;
                 
             }
+
         }
     }
 }

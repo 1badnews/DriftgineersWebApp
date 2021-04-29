@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -10,6 +11,7 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Pages
 {
+    [Authorize]
     [BindProperties]
     public class checkoutModel : PageModel
     {
@@ -48,6 +50,8 @@ namespace WebApplication1.Pages
         [Required]
         [Display(Name = "Post Code")]
         public string post { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string customername { get; set; }
 
         public void GetCartDetails()
         {
@@ -85,8 +89,9 @@ namespace WebApplication1.Pages
 
 
      }
-        public void OnGet()
+        public async void OnGetAsync()
         {
+            customername = _userManager.GetUserAsync(User).Result.FirstName;
             GetCartDetails();
         }
     }

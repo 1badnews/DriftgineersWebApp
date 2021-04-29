@@ -20,11 +20,10 @@
 
             <h1 class="ender"> Copyright. Aras Butrimanskas - N0844425 NTU </h1>
 
-            <a href="index.html"><img class="pt-0" src="~/logosmall.png" alt="driftgineers logo"></a>
+            <a asp-page="index"><img class="pt-0" src="~/logosmall.png" alt="driftgineers logo"></a>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="shop">Shop</a></li>
-                <li><a href="login.html">Login</a></li>
+                <li><a asp-page="index">Home</a></li>
+                <li><a asp-page="shop">Shop</a></li>
                 <li><a class="active" href="#">Cart</a></li>
             </ul>
         </header>
@@ -33,7 +32,7 @@
         <section class="payment-form dark">
             <div class="container">
                 <div class="block-heading">
-                    <h2>Payment</h2>
+                    <h2>@Model.customername's Payment</h2>
                 </div>
                 <form method="post">
                     <div class="products">

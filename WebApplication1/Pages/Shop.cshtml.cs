@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Identity;
@@ -11,6 +12,7 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Pages
 {
+    [Authorize]
     public class ShopModel : PageModel
     {
 
@@ -29,7 +31,16 @@ namespace WebApplication1.Pages
             _db = db;
         }
 
+        [BindProperty(SupportsGet = true)]
+        public string Sort { get; set; }
+
         public Cart cart { get; set; }
+
+        [BindProperty(SupportsGet = true)]
+        public string SearchName { get; set; }
+
+        [BindProperty(SupportsGet = true)]
+        public string EmptyMessage { get; set; }
         public Product product { get; set; }
         public void OnGet()
         {
@@ -42,6 +53,44 @@ namespace WebApplication1.Pages
             _db.SaveChanges();
             return RedirectToPage("shop");
         }
+
+        public IActionResult OnPostSearch()
+        {
+            if(SearchName == null)
+            {
+                return RedirectToPage("shop");
+            }
+            Products = _db.Product.Where(p => p.Name.Contains(SearchName)).ToList();
+            if (Products.Count()==0)
+            {
+                EmptyMessage = "No Products Found.";
+            }
+            else
+            {
+                EmptyMessage = "";
+            }
+            return Page();
+        }
+        public IActionResult OnPostSort()
+        {
+            if (Sort == "PriceAsc")
+            {
+                Products = _db.Product.OrderBy(p => p.Price).ToList();
+                return Page();
+            }
+            if (Sort == "Letter")
+            {
+                Products = _db.Product.OrderBy(p => p.Name).ToList();
+                return Page();
+            }
+            if (Sort == "PriceDsc")
+            {
+                Products = _db.Product.OrderByDescending(p => p.Price).ToList();
+                return Page();
+            }
+            return RedirectToPage();
+        }
+
 
         public IActionResult OnGetCart(int Id)
         {

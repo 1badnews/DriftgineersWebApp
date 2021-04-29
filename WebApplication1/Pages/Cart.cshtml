@@ -14,9 +14,9 @@
 <body>
     <section class="control">
         <header class="navi">
-                <h1 class="ender"> Copyright. Aras Butrimanskas - N0844425 NTU </h1>
-            
-            <a href="index.html"><img class="pt-0" src="~/logosmall.png" alt="driftgineers logo"></a>
+            <h1 class="ender"> Copyright. Aras Butrimanskas - N0844425 NTU </h1>
+
+            <a asp-page="index"><img class="pt-0" src="~/logosmall.png" alt="driftgineers logo"></a>
             <ul>
                 <li><a asp-page="Index">Home</a></li>
                 <li><a asp-page="Shop">Shop</a></li>
@@ -35,7 +35,7 @@
                         <div class="panel-heading">
                             <h1 class="hdeals text-center mb-5 mt-5">
 
-                                Cart
+                                @Model.customername's Cart
                             </h1>
                             <br />
                             <br />

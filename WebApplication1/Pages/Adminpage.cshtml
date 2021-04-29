@@ -131,7 +131,7 @@
             <td>
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Role
+                        @Model.currentrole[user.Id]
                     </button>
                     <div class="dropdown-menu">
                         @foreach (var role in Model.roles)
