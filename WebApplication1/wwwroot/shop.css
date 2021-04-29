@@ -335,6 +335,14 @@ hr
 {
     transform: scale(0.95);
 }
+.whitesmokec {
+    color: whitesmoke;
+    font-family: 'Lato';
+}
+.redc {
+    color: #ec4c4c;
+    font-family: 'Lato';
+}
 input
 {
     width: 5%;

@@ -48,11 +48,11 @@
                         <a asp-page="Product" asp-route-id="@Model.Products[i].Id"> <img src="@Model.Products[i].ProductImage" alt="coilover photo"> <br> </a>
                         <h2> @Model.Products[i].Name </h2> <br>
                         <p class="dealprice"> &euro; @Model.Products[i].Price (Price incl. VAT)</p> <br><br>
-                        <button><a asp-page-handler="Cart" asp-route-id="@Model.Products[i].Id">add to cart </a></button>
+                        <a asp-page-handler="Cart" asp-route-id="@Model.Products[i].Id"><button>add to cart </button></a>
                         @if (this.User.IsInRole("Admin"))
                         {
-                    <button><a asp-page="Adminpage" asp-route-id="@Model.Products[i].Id"> edit</a></button>
-                    <button><a asp-page="/Shop" asp-route-id="@Model.Products[i].Id" asp-page-handler="Delete">delete</a> </button>
+                            <a asp-page="Adminpage" asp-route-id="@Model.Products[i].Id"><button> edit</button></a>
+                            <a asp-page="/Shop" asp-route-id="@Model.Products[i].Id" asp-page-handler="Delete"><button>delete</button></a> 
                         }
                     </div>
 
@@ -62,11 +62,11 @@
                 <a asp-page="Product" asp-route-id="@Model.Products[i + 1].Id"> <img src="@Model.Products[i + 1].ProductImage" alt="coilover photo"> <br> </a>
                 <h2> @Model.Products[i + 1].Name </h2> <br>
                 <p class="dealprice"> &euro; @Model.Products[i + 1].Price (Price incl. VAT)</p> <br><br>
-                <button><a asp-page-handler="Cart" asp-route-id="@Model.Products[i + 1].Id">add to cart  </a></button>
+                <a asp-page-handler="Cart" asp-route-id="@Model.Products[i + 1].Id"><button>add to cart</button></a>
                 @if (this.User.IsInRole("Admin"))
                 {
-            <button><a asp-page="Adminpage" asp-route-id="@Model.Products[i + 1].Id">edit</a></button>
-            <button><a asp-page="/Shop" asp-route-id="@Model.Products[i + 1].Id" asp-page-handler="Delete">delete</a> </button>
+            <a asp-page="Adminpage" asp-route-id="@Model.Products[i + 1].Id"><button>edit</button></a>
+            <a asp-page="/Shop" asp-route-id="@Model.Products[i + 1].Id" asp-page-handler="Delete"><button>delete</button></a> 
                 }
             </div>
                 }
@@ -77,11 +77,11 @@
                 <a asp-page="Product" asp-route-id="@Model.Products[i + 2].Id"> <img src="@Model.Products[i + 2].ProductImage" alt="coilover photo"> <br> </a>
                 <h2> @Model.Products[i + 2].Name </h2> <br>
                 <p class="dealprice"> &euro; @Model.Products[i + 2].Price (Price incl. VAT)</p> <br><br>
-                <button><a asp-page-handler="Cart" asp-route-id="@Model.Products[i + 2].Id"> add to cart </a></button>
+                <a asp-page-handler="Cart" asp-route-id="@Model.Products[i + 2].Id"><button> add to cart</button> </a>
                 @if (this.User.IsInRole("Admin"))
                 {
-            <button><a asp-page="Adminpage" asp-route-id="@Model.Products[i + 2].Id"> edit </a></button>
-            <button><a asp-page="/Shop" asp-route-id="@Model.Products[i + 2].Id" asp-page-handler="Delete">delete</a></button>
+            <a asp-page="Adminpage" asp-route-id="@Model.Products[i + 2].Id"><button> edit</button> </a>
+            <a asp-page="/Shop" asp-route-id="@Model.Products[i + 2].Id" asp-page-handler="Delete"><button>delete</button></a>
                 }
             </div>
                 }

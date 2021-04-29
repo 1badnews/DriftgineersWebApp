@@ -117,19 +117,36 @@
     <tbody>
         @foreach (var user in Model.users)
         {
-            <tr>
-                <td>@user.Id</td>
-                <td>@user.FirstName</td>
-                <td>@user.LastName</td>
-                <td>@user.Email</td>
-                <td>
-                    <form method="post" asp-page-handler="ChangePassword" asp-route-UserId="@user.Id">
-                        <input asp-for="passwordString" />
-                        <input type="submit" value="Update Password" class="btn btn-default" />
-                    </form>
-                </td>
-                <td><a class="btn btn-sm btn-danger order-button float-right" asp-page="/Adminpage" asp-route-UserId="@user.Id" asp-page-handler="DeleteUser">Delete User</a></td>
-            </tr>
+        <tr>
+            <td>@user.Id</td>
+            <td>@user.FirstName</td>
+            <td>@user.LastName</td>
+            <td>@user.Email</td>
+            <td>
+                <form method="post" asp-page-handler="ChangePassword" asp-route-UserId="@user.Id">
+                    <input asp-for="passwordString" />
+                    <input type="submit" value="Update Password" class="btn btn-default" />
+                </form>
+            </td>
+            <td>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Role
+                    </button>
+                    <div class="dropdown-menu">
+                        @foreach (var role in Model.roles)
+                        {
+                            <a class="dropdown-item"  asp-page="/Adminpage" asp-route-UserId="@user.Id" asp-route-roleName="@role.Name" asp-page-handler="ChangeRole">@role.Name</a>
+                        }
+
+                    </div>
+                </div>
+
+            </td>
+            <td><a class="btn btn-sm btn-danger order-button float-right" asp-page="/Adminpage" asp-route-UserId="@user.Id" asp-page-handler="DeleteUser">Delete User</a></td>
+
+
+        </tr>
         }
     </tbody>
 </table>

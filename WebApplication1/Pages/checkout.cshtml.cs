@@ -77,7 +77,7 @@ namespace WebApplication1.Pages
                 _db.Cart.RemoveRange(_db.Cart.Where(e => e.UserID == _userManager.GetUserId(User)));
                 _db.SaveChanges();
 
-                return RedirectToPage("cart");
+                return RedirectToPage("thankyou");
             }
             else
                 GetCartDetails();

@@ -30,8 +30,11 @@ namespace WebApplication1.Pages
         [BindProperty(SupportsGet = true)]
         public string UserId { get; set; }
 
-        [BindProperty]
+        [BindProperty(SupportsGet = true)]
         public string roleName { get; set; }
+
+
+
 
         [BindProperty(SupportsGet=true)]
         public string passwordString { get; set; }
@@ -109,6 +112,19 @@ namespace WebApplication1.Pages
             _db.SaveChanges();
             return Page();
 
+        }
+
+        public async Task<IActionResult> OnGetChangeRoleAsync()
+        {
+
+            var userinfo = await _userManager.FindByIdAsync(UserId);
+
+
+            var rolesToclear = await _userManager.GetRolesAsync(userinfo);
+            await _userManager.RemoveFromRolesAsync(userinfo, rolesToclear.ToArray());
+            await _userManager.AddToRoleAsync(userinfo, roleName);
+
+            return RedirectToPage("/Adminpage");
         }
 
     }
