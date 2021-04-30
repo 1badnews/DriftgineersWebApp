@@ -9,7 +9,7 @@
 <head>
     <script src="javascript.js" defer></script>
     <script src="videopopup.js" defer></script>
-    <link rel="stylesheet" type="text/css" href="shop.css">
+    <link rel="stylesheet" type="text/css" href="~/productpage.css">
 
 </head>
 
@@ -24,7 +24,7 @@
             <ul>
                 <li><a asp-page="Index">Home</a></li>
                 <li><a asp-page="shop">Shop</a></li>
-                <li><a href="#">Cart</a></li>
+                <li><a asp-page="cart">Cart</a></li>
             </ul>
         </header>
     </section>
@@ -41,7 +41,7 @@
                 <h2> &euro; @Model.Products.Price (Price incl. VAT) </h2>
                 @if (Model.Products.Video != null)
                 {
-                    <a href="#" onclick="popup();">Watch Video</a>
+                    <a class="videostyle" href="#" onclick="popup();">Watch Video</a>
                     <div class="kwvideo">
                         <video src="@Model.Products.Video" controls="true"></video>
                         <h1 class="exitbutton" onclick="exit();"> EXIT VIDEO </h1>
@@ -63,7 +63,7 @@
                     <p>
                 </div>
                 <hr>
-                <button> add to cart </button>
+                <a asp-page-handler="Cart" asp-route-id="@Model.Products.Id"><button>add to cart </button></a>
             </div>
         </div>
 
